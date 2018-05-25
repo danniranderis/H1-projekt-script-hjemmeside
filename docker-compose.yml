@@ -1,0 +1,42 @@
+##########
+#
+# Compose-file for setting up all required (micro-)services for the project
+#
+# USED images from HUB:
+# MariaDB:    https://hub.docker.com/_/mariadb/
+# PHPMyAdmin: https://hub.docker.com/r/phpmyadmin/phpmyadmin/
+# Adminer:    https://hub.docker.com/_/adminer/
+#
+##########
+
+version: '2'
+
+services:
+
+  db:
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: datait2018!
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    environment:
+      - PMA_ARBITRARY=1
+    restart: always
+    ports:
+      - 8081:80
+    volumes:
+      - /sessions
+
+#  adminer:
+#    image: adminer
+#    restart: always
+#    ports:
+#      - 8082:8080
+
+  web:
+    build: ./web/
+    ports:
+      - 8080:80
