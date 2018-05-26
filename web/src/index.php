@@ -1,5 +1,8 @@
 <?php
 
+# Init the global-settings
+include_once('global.php');
+
 # Include the base header
 include_once('base_header.php');
 
