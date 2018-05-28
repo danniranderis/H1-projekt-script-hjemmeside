@@ -1,0 +1,11 @@
+.opg_container {
+    background-color: ghostwhite;
+    padding: 5px 10px 10px 10px;
+    margin-bottom: 20px;
+    border-style: outset;
+}
+
+.opg_container h3 {
+    margin-top: 5px;
+    margin-bottom: 0px;
+}
