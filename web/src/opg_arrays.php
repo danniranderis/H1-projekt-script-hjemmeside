@@ -31,8 +31,9 @@ include_once('base_header.php');
             Udskriv dags dato automatisk på dansk via disse arrays og dato-funktionen.</i></p>
     <hr>
     <?php
-    $da_day_array = array('0000', 'Mandag', 'Tirsdag', 'Onsdag', 'Torsdag', 'Fredag', 'Lørdag', 'Søndag');
-    $da_month_array = array('0000', 'Januar', 'Februar', 'Marts', 'April', 'Maj', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'December');
+    // Create danish day/month arrays and make them 1-indexed (as opposed to the default 0-indexed)
+    $da_day_array = array(1 => 'Mandag', 'Tirsdag', 'Onsdag', 'Torsdag', 'Fredag', 'Lørdag', 'Søndag');
+    $da_month_array = array(1 => 'Januar', 'Februar', 'Marts', 'April', 'Maj', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'December');
     echo 'Dags dato er: '.$da_day_array[date('N')].' d. '.date('j').'. '.$da_month_array[date('n')].' '.date('Y');
     ?>
     <p>Dette kan dog gøres noget nemmere når man sørger for at sætte <pre>setlocale();</pre></p>
