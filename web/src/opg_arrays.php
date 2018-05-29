@@ -154,6 +154,73 @@ include_once('base_header.php');
 </div>
 
 
+<div class="opg_container">
+    <h3>Opgave 1 - Kalender</h3>
+    <p><i>Der skal laves en "kalender" med visning af alle mdr-numre, datoer for nuværende mdr samt pile på de nuværende.
+        Ligeledes skal der være en visning af dags dato, et random visning af 6 billeder udvalgt fra en pool på 8 billeder samt slutteligt
+        12 visninger af billeder af terninger først "ASC" og derefter "DESC".</i></p>
+    <hr>
+
+    <div class="day_container">
+        <?php
+        // Print all days of the current month and set class on the current day
+        $cur_day = date('j');
+        for ($i = 1; $i <= date('t'); $i++){
+            echo '<div class="day_num_cell '. ($cur_day == $i ? "day_cell_selected" : "") .'">'.
+                $i.
+                ($cur_day == $i ? '<div class="current_day_arrow">&ShortDownArrow;</div>': '').
+                '</div>';
+        }
+        ?>
+    </div>
+    <div class="clear"></div>
+
+    <div class="month_container">
+        <?php
+        // Print all month numbers and set class on current month
+        $cur_month = date('n');
+        for ($i = 1; $i <= 12; $i++){
+            echo '<div class="month_num_cell '. ($cur_month == $i ? "month_cell_selected" : "") .'">'.
+                $i.
+                ($cur_month == $i ? '<div class="current_month_arrow">&ShortUpArrow;</div>': '').
+                '</div>';
+        }
+        ?>
+    </div>
+    <div class="clear"></div>
+
+    <div class="column_container">
+        <div class="cur_date half_width">
+            <p>Det er i dag den <?php echo strftime('%e. %B %Y'); ?> <br/>
+            og klokken er <?php echo strftime('%R') ?></p>
+        </div>
+
+        <div class="pic_random half_width">
+            <?php
+            $pics = array('1.jpg', '2.jpg', '3.jpg', '4.jpg',
+                          '5.jpg', '6.jpg', '7.jpg', '8.jpg');
+
+            foreach (array_rand($pics, 6) as $item) {
+                echo '<div class="half_width"><img src="img/cal_img/'.$pics[$item].'" /></div>';
+            }
+            ?>
+        </div>
+    </div>
+    <div class="clear"></div>
+
+    <div class="cubs">
+        <?php
+        $joined_cubs = array_merge($a5_terning, array_reverse($a5_terning));
+
+        foreach ($joined_cubs as $item) {
+            echo '<div class="cal_terning"><img src="img/'.$item.'" /></div>';
+        }
+        ?>
+    </div>
+    <div class="clear"></div>
+</div>
+
+
 
 
 
