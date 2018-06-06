@@ -1,83 +1,12 @@
+.clear {clear: both;}
+
 .opg_container {
     background-color: ghostwhite;
     padding: 5px 10px 10px 10px;
     margin-bottom: 20px;
     border-style: outset;
 }
-
 .opg_container h3 {
     margin-top: 5px;
     margin-bottom: 0px;
 }
-
-.clear {
-    clear: both;
-}
-
-/* OPG 1 CALENDAR */
-.month_container, .day_container {
-    width: 100%;
-    margin-bottom: 8px;
-}
-
-.month_num_cell {
-    width: calc(calc(100% - 44px) / 12);
-    float: left;
-    text-align: center;
-    background-color: antiquewhite;
-    margin: 0px 2px;
-
-}
-
-.day_num_cell {
-    width: calc(calc(100% - 60px) / 31);
-    float: left;
-    position: relative;
-    text-align: center;
-    background-color: antiquewhite;
-    margin: 0px 1px;
-
-}
-
-.month_container > :first-child, .day_container > :first-child {
-    /* Remove margin on the left-most border */
-    margin-left: 0px !important;
-}
-
-.month_container > :last-child, .day_container > :last-child {
-    /* Remove margin on the right-most border */
-    margin-right: 0px !important;
-}
-
-.month_container .month_cell_selected, .day_container .day_cell_selected {
-    background-color: #e3d3bb;
-}
-
-.current_month_arrow, .current_day_arrow {
-    text-align: center;
-    background-color: ghostwhite;
-}
-
-.current_day_arrow {
-    position: absolute;
-    top: -18px;
-    width: 100%;
-}
-
-.half_width {
-    width: 50%;
-    float: left;
-}
-
-.cubs {
-    width: 100%;
-}
-
-.cal_terning img {
-    position: relative;
-    float: left;
-    width: calc(100% / 12);
-    height: auto;
-}
-
-/* END */
