@@ -11,11 +11,25 @@
 
 version: '2'
 
+networks:
+  app-network:
+    driver: bridge
+    ipam:
+      config:
+      - subnet: 172.5.0.0/16
+        gateway: 172.5.0.1
+
 services:
 
   db:
     image: mariadb
     restart: always
+    ports:
+      - 3306:3306
+    networks:
+      app-network:
+        ipv4_address: 172.5.0.2
+
     environment:
       MYSQL_ROOT_PASSWORD: datait2018!
 
@@ -27,6 +41,9 @@ services:
     restart: always
     ports:
       - 8081:80
+    networks:
+      app-network:
+        ipv4_address: 172.5.0.3
     volumes:
       - /sessions
 
@@ -40,5 +57,8 @@ services:
     build: ./web/
     ports:
       - 8080:80
+    networks:
+      app-network:
+        ipv4_address: 172.5.0.4
     volumes:
       - ./web/src/:/var/www/html/
