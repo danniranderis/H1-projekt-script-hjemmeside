@@ -17,3 +17,6 @@ RUN sed -i -e 's/# da_DK.UTF-8 UTF-8/da_DK.UTF-8 UTF-8/' /etc/locale.gen && \
     dpkg-reconfigure --frontend=noninteractive locales && \
     update-locale LANG=da_DK.UTF-8
 ENV LC_ALL da_DK.UTF-8
+
+# Install php-mysql package
+RUN docker-php-ext-install mysqli
