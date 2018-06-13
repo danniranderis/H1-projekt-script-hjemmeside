@@ -127,7 +127,8 @@ class Auth
     public function logout()
     {
         self::$instance = null;
-        unset($_SESSION['auth']);
+        unset($_SESSION['username']);
+        unset($_SESSION['login_string']);
     }
 
     protected function loadDbValues()

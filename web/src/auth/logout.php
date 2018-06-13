@@ -5,9 +5,7 @@
 
 require_once('../global.php');
 require_once('auth.php');
-@session_start();
 
-if (Auth::isLoggedIn())
-    Auth::getInstance()->logout();
+Auth::logout();
 
 header("Location: http://${_SERVER['HTTP_HOST']}");
