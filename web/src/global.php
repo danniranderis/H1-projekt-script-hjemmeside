@@ -3,6 +3,11 @@
  * Initial global settings included on every page
  **/
 
+// Set session
+// FIXME: Be aware of that the standard session_start() isn't 100% secure!
+// FIXME: Should create own "sec_session_start()" with mitigation of e.g. XSS-attacks
+@session_start();
+
 // Set the absolute path for the project
 $absolute_path = realpath(dirname(__FILE__)) . '/';
 
