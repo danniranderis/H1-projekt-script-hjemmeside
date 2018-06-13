@@ -16,7 +16,7 @@ try
 
         if ($logged_in_ok)
         {
-            header("Location: /");
+            header("Location: /hemmeligt/");
         }
         else
         {
