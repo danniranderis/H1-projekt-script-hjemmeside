@@ -14,6 +14,9 @@ date_default_timezone_set('Europe/Copenhagen');
 $db_conf = parse_ini_file($absolute_path.'db_credentials.ini');
 $db = new mysqli($db_conf['host'], $db_conf['user'], $db_conf['password'], $db_conf['database']);
 
+// Set charset to utf8 to mitigate weirdness in strings back and forth
+$db->set_charset('utf8');
+
 // Test the db-connection
 if ($db->connect_error) {
     die('Kan ikke forbinde til databasen. Fejl: (' . $db->connect_errno . ') ' . $db->connect_error);
