@@ -14,6 +14,8 @@ include_once('../base_header.php');
 <h1>De hemmelige sider</h1>
 <p>Og dette er en paragraf.</p>
 
+<a href="../auth/logout.php">Logud</a>
+
 
 
 
