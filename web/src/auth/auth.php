@@ -48,33 +48,27 @@ class Auth
         return false;
     }
 
-    protected function VerifyPassword($pw, $db_pw_hash = false)
+    protected function VerifyPassword($pw, $db_pw_hash)
     {
         /* Validate that the provided password is the same as hash from db */
-        if (isset($db_pw_hash))
-            $known_hash = $db_pw_hash;
-        else
-            $this->loadDbValues();
-            $known_hash = $this->db_pw_hash;
-
-        if (password_verify($pw, $known_hash))
+        if (password_verify($pw, $db_pw_hash))
             return true;
         return false;
     }
 
-    protected function ReHashPassword($pw)
+    protected function ReHashPassword($pw, $db_pw_hash)
     {
-        if (password_needs_rehash($this->db_pw_hash, PASSWORD_DEFAULT))
+        if (password_needs_rehash($db_pw_hash, PASSWORD_DEFAULT))
             return self::SavePassword(self::HashPassword($pw));
         return false;
     }
 
-    protected function LogLoginAttempt($success)
+    protected function LogLoginAttempt($user_id, $success)
     {
         /* Log a login-attempt in the db */
         global $db;
         if ($log = $db->prepare("INSERT INTO login_attempts(user_id, success) VALUES (?, ?)")) {
-            $log->bind_param('ii', $this->user_id, $success);
+            $log->bind_param('ii', $user_id, $success);
             $log->execute();
             return true;
         }
@@ -106,14 +100,16 @@ class Auth
                     $_SESSION['login_string'] = hash('sha512', $db_pw_hash . $user_browser);
 
                     // Save attempt log
-                    $this->LogLoginAttempt(true);
+                    self::LogLoginAttempt($user_id, true);
 
                     // Test if the password needs to be rehashed, and if so - do it
-                    self::ReHashPassword($db_pw_hash);
+                    self::ReHashPassword($pw, $db_pw_hash);
+
+                    return true;
 
                 } else {
                     // Password is not correct - log the attempt
-                    self::LogLoginAttempt(false);
+                    self::LogLoginAttempt($user_id, false);
 
                     throw new UserNotFoundException("Bruger ikke fundet!");
                 }
