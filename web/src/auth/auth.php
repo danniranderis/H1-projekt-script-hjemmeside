@@ -113,10 +113,9 @@ class Auth
 
                     throw new UserNotFoundException("Bruger ikke fundet!");
                 }
-            } else {
-                return false;
             }
         }
+        return false;
     }
 
     public static function isLoggedIn()
