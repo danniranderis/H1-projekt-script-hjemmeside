@@ -45,13 +45,13 @@ include_once('base_header.php');
     <p><i>Lav en liste over alle lande, det kontinent, de tilhører og befolkningstallet. Sorter dem efter befolkningstal med det befolkningsrigeste først.</i></p>
     <hr>
     <?php
-    $opg3 = $db_world->query("SELECT name, population, region FROM Country ORDER BY population DESC");
+    $opg4 = $db_world->query("SELECT name, population, region FROM Country ORDER BY population DESC");
     echo "<table><thead><tr><th>Navn</th><th>Befolkningtal</th><th>Region</th></tr></thead><tbody>";
-    while ($row = $opg3->fetch_assoc()) {
+    while ($row = $opg4->fetch_assoc()) {
         printf("<tr><td>%s</td><td>%s</td><td>%s</td></tr>", $row['name'], $row['population'], $row['region']);
     }
     echo "</tbody></table>";
-    $opg3->free_result();
+    $opg4->free_result();
     ?>
 </div>
 
@@ -60,13 +60,13 @@ include_once('base_header.php');
     <p><i>Lav en liste over alle caribiske lande.</i></p>
     <hr>
     <?php
-    $opg3 = $db_world->query("SELECT name, region FROM Country WHERE region = 'Caribbean'");
+    $opg5 = $db_world->query("SELECT name, region FROM Country WHERE region = 'Caribbean'");
     echo "<table><thead><tr><th>Navn</th><th>Region</th></tr></thead><tbody>";
-    while ($row = $opg3->fetch_assoc()) {
+    while ($row = $opg5->fetch_assoc()) {
         printf("<tr><td>%s</td><td>%s</td></tr>", $row['name'], $row['region']);
     }
     echo "</tbody></table>";
-    $opg3->free_result();
+    $opg5->free_result();
     ?>
 </div>
 
@@ -75,13 +75,13 @@ include_once('base_header.php');
     <p><i>Lav en liste over alle lande, hvor der tales engelsk.</i></p>
     <hr>
     <?php
-    $opg3 = $db_world->query("SELECT c.name, cl.language FROM Country as c JOIN CountryLanguage as cl ON c.code = cl.countrycode WHERE cl.language = 'English'");
+    $opg6 = $db_world->query("SELECT c.name, cl.language FROM Country as c JOIN CountryLanguage as cl ON c.code = cl.countrycode WHERE cl.language = 'English'");
     echo "<table><thead><tr><th>Navn</th><th>Sprog</th></tr></thead><tbody>";
-    while ($row = $opg3->fetch_assoc()) {
+    while ($row = $opg6->fetch_assoc()) {
         printf("<tr><td>%s</td><td>%s</td></tr>", $row['name'], $row['language']);
     }
     echo "</tbody></table>";
-    $opg3->free_result();
+    $opg6->free_result();
     ?>
 </div>
 
@@ -90,13 +90,13 @@ include_once('base_header.php');
     <p><i>Lav en liste over alle lande, hvor spansk er det officielle sprog.</i></p>
     <hr>
     <?php
-    $opg3 = $db_world->query("SELECT c.name, cl.language FROM Country as c JOIN CountryLanguage as cl ON c.code = cl.countrycode WHERE cl.language = 'Spanish' AND cl.isofficial='T'");
+    $opg7 = $db_world->query("SELECT c.name, cl.language FROM Country as c JOIN CountryLanguage as cl ON c.code = cl.countrycode WHERE cl.language = 'Spanish' AND cl.isofficial='T'");
     echo "<table><thead><tr><th>Navn</th><th>Sprog</th></tr></thead><tbody>";
-    while ($row = $opg3->fetch_assoc()) {
+    while ($row = $opg7->fetch_assoc()) {
         printf("<tr><td>%s</td><td>%s</td></tr>", $row['name'], $row['language']);
     }
     echo "</tbody></table>";
-    $opg3->free_result();
+    $opg7->free_result();
     ?>
 </div>
 
@@ -105,13 +105,13 @@ include_once('base_header.php');
     <p><i>Lav en liste over alle lande, deres styreform og deres hovedstad.</i></p>
     <hr>
     <?php
-    $opg3 = $db_world->query("SELECT c.name AS coname, c.governmentform, ci.name AS ciname FROM Country as c JOIN City as ci ON c.capital = ci.id");
+    $opg8 = $db_world->query("SELECT c.name AS coname, c.governmentform, ci.name AS ciname FROM Country as c JOIN City as ci ON c.capital = ci.id");
     echo "<table><thead><tr><th>Navn</th><th>Styreform</th><th>Hovedstad</th></tr></thead><tbody>";
-    while ($row = $opg3->fetch_assoc()) {
+    while ($row = $opg8->fetch_assoc()) {
         printf("<tr><td>%s</td><td>%s</td><td>%s</td></tr>", $row['coname'], $row['governmentform'], $row['ciname']);
     }
     echo "</tbody></table>";
-    $opg3->free_result();
+    $opg8->free_result();
     ?>
 </div>
 
@@ -247,7 +247,8 @@ include_once('base_header.php');
     <p>
         Via din CLI kan du importere den backup du foretog i opgave 13.
         Husk gerne at tømme databasen forinden (fx via en DROP og derefter CREATE).
-    <pre>mysql -u username -p [database] < [database].sql</pre>
+        <pre>mysql -u [username] -p [database] < [database].sql</pre>
+    </p>
 </div>
 
 <div class="opg_container">
