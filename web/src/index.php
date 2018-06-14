@@ -13,6 +13,7 @@ include_once('base_header.php');
 
 <a href="hemmeligt/">Login på de beskyttede sider</a><br/>
 <a href="opg_arrays.php">Opgave omkring arrays</a><br/>
+<a href="db_world_opg.php">Opgave omkring databasen world</a><br/>
 <a href="phpinfo.php">PHP-info side</a>
 
 
