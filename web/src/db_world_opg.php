@@ -117,10 +117,10 @@ include_once('base_header.php');
 
 
 <div class="opg_container">
-    <h3>Opgave 9</h3>
+    <h3 id="opg9">Opgave 9</h3>
     <p><i>Lav et script, hvor du kan lave et udtræk, der viser: alle afrikanske lande eller, alle afrikanske lande med styreformen republik eller, alle afrikanske lande med styreformen republik og et befolkningstal over 2 mill.</i></p>
     <hr>
-    <form action="" method="get">
+    <form action="#opg9" method="get">
         <input name="opg9-all" type="submit" value="Alle Afrikanske lande" />
         <input name="opg9-rep" type="submit" value="Alle republikanske lande i Afrika" />
         <input name="opg9-rep2" type="submit" value="Alle republikanske lande i Afrika med over 2mill. indbyggere" />
