@@ -15,6 +15,7 @@ CREATE DATABASE IF NOT EXISTS website CHARACTER SET utf8 COLLATE utf8_general_ci
 -- Create the user for the website and grant permissions
 GRANT USAGE ON *.* TO 'website_connect'@'%' IDENTIFIED BY PASSWORD '*F0F191CDC10A5A68C9621C3BB75CE8528E58703C';
 GRANT SELECT, INSERT, UPDATE, DELETE ON `website`.* TO 'website_connect'@'%';
+GRANT SELECT, INSERT, UPDATE, DELETE ON `world\_opg`.* TO 'website_connect'@'%';
 
 
 -- --------------------------------------------------------
